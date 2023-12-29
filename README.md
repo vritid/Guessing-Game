@@ -46,6 +46,7 @@ e. If the response is "No", end the game.
 
   
 Process/Predefined Methods used:
+
 ● String guess = input.nextLine().toLowerCase(); - Reads a line of input from the user and converts it to lowercase. It is used to
 get the user's guess.
 ● guess.length() - Returns the length of the guess entered by the user. It is used to check if the guess is a single letter or the full
