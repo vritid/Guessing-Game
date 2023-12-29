@@ -1,3 +1,5 @@
+****FIX FORMATTING****
+
 import java.util.Scanner;
 public class WordGuessingGame {
 public static Scanner input;
