@@ -1,0 +1,86 @@
+import java.util.Scanner;
+public class WordGuessingGame {
+public static Scanner input;
+public static void main(String[] args) {
+Scanner input = new Scanner(System.in);
+//Title of the Game
+//*****************//
+System.out.println("\t\t\t Champions League Winner Guessing Game");
+System.out.println("\t\t\t-----------------------------------------------\n");
+//Start game (or repeat if user wants to play again)
+//************************************************//
+String response;
+do {
+
+// Print game introduction
+System.out.println("\nWhich English city won the Champions League Title in 2023?");
+System.out.println("Try to guess the word in 10 attempts. (Hint: That's how many characters long the city
+is.)\n");
+System.out.println("Wrong answer = -1 Attempt");
+System.out.println("Right answer = No change to # of Attempts\n");
+System.out.println("------------------------------------------------------------------------------------------
+----------\n");
+//Initialize game variables
+String secretWord = "Manchester";
+String guessedWord = "";
+int attempts = 10;
+//Process: game loop
+while (attempts > 0 && !secretWord.equalsIgnoreCase(guessedWord)) {//valid attempts and not the word, keep
+asking to guess
+System.out.println("Attempts remaining: " + attempts);
+System.out.println("Enter a letter (in order) or the full word: ");
+System.out.println("Guessed word: " + guessedWord);
+String guess = input.nextLine().toLowerCase();
+if (guess.length() == 1) {//if they guessed a letter
+// Process letter guess
+char letter = guess.charAt(0);//first letter of manchester
+
+if (secretWord.toLowerCase().indexOf(guess) != -1) {//If the letter is present in the secretWord, then the
+indexOf method will return a value other than -1.
+guessedWord += letter;//add the letter to the guessed word to form the word
+} else {//if the letter is not present in the word
+System.out.println("Incorrect guess!");
+attempts--;//reduce 1 attempt
+}//else
+}//if (at the start)
+//---------------------------------------------------------------------//
+else if (guess.length() == secretWord.length()) {
+// Process full word guess
+if (guess.equalsIgnoreCase(secretWord)) {//if word is right, assign it to variable just cause
+guessedWord = secretWord;
+}//else
+else {//if word is 10 characters but not manchester
+System.out.println("Incorrect guess!");
+attempts--;
+}//else
+}//else (first)
+//---------------------------------------------------------------------//
+else {//if less than 10 characters word
+
+// Invalid input
+System.out.println("Please enter a single letter or the complete word (10 characters).\n");
+}//else
+}//while (in the start)
+//************************************************************************************************************
+***************//
+// Game result
+if (secretWord.equalsIgnoreCase(guessedWord)) {
+// Correct guess
+System.out.println("\nCongratulations! You guessed the city: " + secretWord);
+System.out.println("Manchester City won the Champions League Title in the 2023 season.");
+}//if
+//---------------------------------------------------------------------//
+else {
+// Out of attempts
+System.out.println("Sorry, you're out of attempts. The city was: " + secretWord);
+System.out.println("Manchester City won the Champions League Title in the 2023 season.\n");
+}//else
+//---------------------------------------------------------------------//
+// Ask user if they want to play again
+System.out.print("\nDo you want to play again? (Yes/No): ");
+
+response = input.nextLine().toLowerCase();
+} while (response.equals("yes"));
+System.out.println("\nThank you for playing:))");
+}//main
+}//WordGuessingGame
